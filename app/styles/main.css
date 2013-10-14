@@ -4,19 +4,48 @@ body {
     color: #333;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+/***
+    ここのサンプルをほぼそのまま使用
+    http://www.css5days.com/tips/listmesh02.html
+ ***/
+div#mesh {
+    width: 270px;
+    height: 360px;
+    margin: 5px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #999999;
+    font-size:140%;
+}
+div#mesh {
+    border-top: 10px solid #9EE385;
+    border-left: 10px solid #9EE385;
+}
+div#mesh ul {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 270px;
+}
+div#mesh li {
+    margin: 0;
+    padding: 0;
+    float:left;
+    width: 80px;
+    height: 80px;
+    vertical-align: top;
+    border-bottom: 10px solid #9EE385;
+    border-right: 10px solid #9EE385;
+    list-style: none;
+    line-height: 80px;
+    text-align: center;
+    overflow: hidden;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+div#mesh li#player1{
+    color:#03f
+}
+
+div#mesh li#player2{
+    color:#f30
 }
