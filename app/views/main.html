@@ -3,7 +3,7 @@
         <li ng-repeat="cell in cells" ng-click="move(cell.position)" id="{{cell.piece.player}}">{{cell.piece.name}}</li>
     </ul>
 </div>
-<div>{{turn.activePlayer.name}} の番です</div>
+<div>{{turn.activePlayer.name}} の {{action}}</div>
 <div ng-repeat="player in turn.players">
     <div>
         {{player.name}} の持ち駒
