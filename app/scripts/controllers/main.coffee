@@ -2,12 +2,6 @@
 
 angular.module('animalShogiApp')
   .controller 'MainCtrl', ($scope) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
-
     player1 = new Player "player1"
     player2 = new Player "player2"
 
@@ -88,7 +82,7 @@ choicePieceInHand = ($scope, pos) ->
     return unless isEmptyCell(targetPos.piece)
 
     $scope.cells[pos].piece = targetPiece
-    activePlayer.put(targetPiece.name)
+    activePlayer.put(targetPiece.constructor.name)
     $scope.mode.set("gameStart", "")
     $scope.turn.turnSwitch()
     return
@@ -132,12 +126,12 @@ class Turn
 
 class Player
     constructor: (@name, @havePiece) ->
-        @havePiece = []
+        @havePiece = [] unless @havePiece
     get: (piece) ->
         @havePiece.push(piece)
     put: (name) ->
         for i in [0..@havePiece.length - 1]
-            if @havePiece[i].name == name
+            if @havePiece[i].constructor.name == name
                 @havePiece.splice(i, 1)
                 return
     has: (className) ->

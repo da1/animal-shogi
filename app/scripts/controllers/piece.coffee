@@ -5,7 +5,7 @@ isTryArea = (player, index) ->
     if player == 0
         return 0 <= index < BOARD_WIDTH
     if player == 1
-        end = BOARD_WIDTH * BOARD_HEIGHT - 1
+        end = BOARD_WIDTH * BOARD_HEIGHT
         start = end - BOARD_WIDTH
         return start <= index < end
     return false
