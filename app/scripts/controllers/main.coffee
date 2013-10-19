@@ -59,12 +59,11 @@ choicePieceOnBoard = ($scope, pos) ->
         if piece.constructor.name is 'Chick'
             if isTryArea $scope.turn.active, pos
                 chicken = piece.grow()
-                console.log chicken
                 $scope.cells[pos].piece = chicken
 
         lionPos = -1
         lionPos = pos if piece.constructor.name is 'Lion'
-        if checkYouWin(activePlayer, lionPos, $scope.turn)
+        if checkYouWin(activePlayer, lionPos, $scope.turn, $scope.cells)
             $scope.action = "勝ちです"
             $scope.mode.set("gameEnd", activePlayer.name)
             return
@@ -96,10 +95,19 @@ isEmptyCell = (piece) ->
 isEnemyPiece = (player, targetPiece) ->
     return player.name != targetPiece.player
 
-checkYouWin = (player, lionPos, turn) ->
+checkYouWin = (player, lionPos, turn, cells) ->
     return true if player.has('Lion')
     if lionPos >= 0
-        return isTryArea(turn.active, lionPos)
+        if isTryArea(turn.active, lionPos)
+            for i in [-4, -3, -2, -1, 1, 2, 3, 4]
+                index = lionPos + i
+                continue if index < 0
+                continue if index > 12
+                piece = cells[index].piece
+                continue if isEmptyCell(piece)
+                if isEnemyPiece(player, piece)
+                    return false if piece.canMove(lionPos, index)
+            return true
     return false
 
 class Mode
